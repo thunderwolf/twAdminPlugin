@@ -1,0 +1,34 @@
+all:
+  tw_admin:
+    login_route:                  @sf_guard_signin
+    logout_route:                 @sf_guard_signout
+    
+    default_module:               administration
+    default_category:             info
+    default_subcategory:          false
+
+    master_section:
+      administration:
+        label: Administracja
+        url:   @homepage
+        credentials: [superadmin]
+
+    menu:
+      administration:
+        categories:
+          info:
+            label: Informacje
+            url:   @homepage
+            credentials: [admin]
+          users:
+            label: Users
+            url:   @sf_guard_user
+            credentials: [admin]
+          permissions:
+            label: Permissions
+            url:   @sf_guard_permission
+            credentials: [superadmin]
+          groups:
+            label: Groups
+            url:   @sf_guard_group
+            credentials: [superadmin]

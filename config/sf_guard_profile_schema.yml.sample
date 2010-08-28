@@ -1,0 +1,15 @@
+# Profile extension table for sfGuard
+
+propel:
+  sf_guard_user_profile:
+    _attributes:         { phpName: sfGuardUserProfile, package: plugins.twCorePlugin.lib.model }
+    user_id:             { type: integer, primaryKey: true, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+    asset_id:            { type: INTEGER, required: false, foreignTable: tw_asset, foreignReference: id, onDelete: setnull }
+    email:               { type: varchar(150), required: true }
+    first_name:          { type: varchar(50) }
+    last_name:           { type: varchar(100) }
+    birthday:            date
+    alias:               { type: varchar(20) }
+    
+    # Config Settings
+    culture:             { type: varchar(10), default: 'pl' }

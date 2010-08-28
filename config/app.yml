@@ -1,0 +1,27 @@
+all:
+  tw_admin:
+    web_dir:                      /twAdminPlugin
+    image_dir:                    /twAdminPlugin/images/
+    
+    site:                         My Site
+    site_start_year:              2009
+    
+    include_path:                 true
+    include_jquery_no_conflict:   false
+    
+    login:                        false
+    logout:                       true
+    login_route:                  @homepage
+    logout_route:                 @homepage
+    
+    default_module:               false
+    default_category:             false
+    default_subcategory:          false
+    
+    not_logged_top_active:        false
+    not_logged_menu_active:       false
+    
+    master_section:
+      homepage: 
+        label: Strona Główna
+        url:   @homepage
