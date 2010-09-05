@@ -1,3 +1,4 @@
+<?php slot('sidebar') ?>
 <div id="layout-sidebar">
 
 <div id="side-menu-box" class="side-box">
@@ -35,3 +36,4 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales convallis risus, a fringilla massa luctus eu. Praesent hendrerit, turpis id lobortis sagittis, ligula nisi dignissim mauris, at porttitor nisi est at magna. In at purus posuere purus placerat pellentesque. Vivamus odio risus, pharetra quis vehicula ut, tristique nec sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin nulla massa, fermentum id aliquet a, consectetur a tortor. Aenean id ullamcorper sem. Mauris laoreet convallis ligula sed porttitor. Donec justo felis, faucibus sed placerat a, ultrices a lorem. Maecenas nec erat a mauris hendrerit tincidunt. Mauris sit amet dolor nec lacus pretium suscipit. Morbi semper vulputate tortor, sed dapibus diam feugiat ut.
 </div> <!-- #layout-sidebar -->
+<?php end_slot() ?>

@@ -4,7 +4,7 @@
 
 I had to create nice backend for my Thunderwolf Project and here is result. 
 
-This plugin is based on sfAdminDashPlugin created by Kevin Bond. Like him I had to create a menu to access all the various modules.  
+This plugin is based on __sfAdminDashPlugin__ created by __Kevin Bond__. Like him I had to create a menu to access all the various modules.  
 
 This plugin automates the process by using a configuration files.
 
@@ -16,115 +16,120 @@ Base plugin for all Thunderwolf Plugins
 [sfGuardPlugin](http://www.symfony-project.org/plugins/sfGuardPlugin)
 The Best plugin for authentication
 
-##How to use
+##Installation
 
-###Step 1 - install plugin
+Install plugin:
 
-Install the plugin, clear the cache and activate the twDefault and twAdmin module 
-in the application's *settings.yml*.
+	symfony plugin:install twAdminPlugin -s alpha
+	symfony cache:clear
 
-    enabled_modules:        [default, twDefault, twAdmin]
+Create backend or admin app if not exists:
 
-###Step 2 - setup theme
+	symfony generate:app backend
+
+Next use prepared skeleton:
+
+*   replace or merge __/apps/backend/config/app.yml__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/config/app.yml__ 
+>**Note**
+> Remember to change fragments connecting this app.yml with sfGuardPlugin if you don't use it
+
+*   replace or merge __/apps/backend/config/routing.yml__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/config/routing.yml__
+
+*   merge __/apps/backend/config/settings.yml__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/config/settings.yml__
+
+*   replace __/apps/backend/templates/layout.php__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/templates/layout.php__
+
+If you use __sfGuardPlugin__:
+
+*   Be shure that you made all installations for __sfGuardPlugin__
+
+*   copy folders from __/plugins/twAdminPlugin/data/skeleton/apps/backend/modules/__ to __/apps/backend/modules/__
+
+*   replace or merge files in __/plugins/sfGuardPlugin__ with files in __/plugins/twAdminPlugin/data/skeleton/plugins/sfGuardPlugin__ (better look in admin section)
+
+If you don't have own favicon.ico you can use this preoared for Thunderwolf:
+
+*   Just copy __/plugins/twAdminPlugin/data/skeleton/web/favicon.ico__ to your __/web__ folder
 
 Publish the plugin's assets:
 
-    plugin:publish-assets
+	plugin:publish-assets
 
-If the modules are admin generator modules, deactivate the default admin 
-generator theme in each module's *generator.yml* by creating a css 
-property.  You can either point the css property to a real stylesheet or 
-just use a placeholder.
+If the modules are admin generator modules, deactivate the default admin generator theme in each module's *generator.yml* by creating a css property.  You can either point the css property to a real stylesheet or just use a placeholder.
 
-    generator:
-      class: sfPropelGenerator
-      param:
-        model_class:           Article
-        theme:                 thunderwolf
-        non_verbose_templates: true
-        with_show:             false
-        singular:              ~
-        plural:                ~
-        route_prefix:          article
-        with_propel_route:     1
-        css:                   nothing   #setting the css to a placeholder 
-
-        config:
-          actions: ~
-          fields:  ~
-          list:    ~
-          filter:  ~
-          form:    ~
-          edit:    ~
-          new:     ~
-
-
-Add the plugin's header and footer partials to your applications global 
-layout:
-
-    <body>
-      <div id="wrapper">
-        <?php include_component('twAdmin', 'top') ?>
-        <?php include_component('twAdmin', 'menu') ?>
-        <div id="layout-content" class="layout-row">
-          <div class="layout-box">
-            <?php echo $sf_content ?>
-          </div> <!-- .layout-box -->
-        </div> <!-- #layout-content -->
-        <?php include_partial('twAdmin/bottom') ?>
-      </div> <!-- #wrapper -->
-    </body>
-
-###Step 3 (optional) - setup sfGuardPlugin
-
-Copy files from twAdminPlugin/data/skeleton/apps/backend/modules to your app modules.
-
-###Step 4 (optional) - setup the Thunderwolf Admin homepage
-
-Set your application's *homepage* in your application's *routing.yml* to:
-
-    homepage:
-      url:   /
-      param: { module: twAdmin, action: index }
-
-###Step 5 - configure global plugin configuration
+	generator:
+	  class: sfPropelGenerator
+	  param:
+	    model_class:           Article
+	    theme:                 twadmin
+	    non_verbose_templates: true
+	    with_show:             false
+	    singular:              ~
+	    plural:                ~
+	    route_prefix:          article
+	    with_propel_route:     1
+	    css:                   nothing   #setting the css to a placeholder 
+	
+	    config:
+	      actions: ~
+	      fields:  ~
+	      list:    ~
+	      filter:  ~
+	      form:    ~
+	      edit:    ~
+	      new:     ~
 
 The plugin's *app.yml* file looks like the following:
 
-    all:
-      tw_admin:
-        web_dir:                      /twAdminPlugin
-        image_dir:                    /twAdminPlugin/images/
-        default_image:                logo.png
-        resize_mode:                  thumbnail
-        site:                         My Site
-        site_start_year:              2009
-        include_path:                 true
-        include_jquery_no_conflict:   false
-        logout:                       true
-        login_route:                  @sf_guard_signin
-        logout_route:                 @sf_guard_signout
+	all:
+	  tw_admin:
+	    login_route:                  @sf_guard_signin
+	    logout_route:                 @sf_guard_signout
+	    
+	    default_module:               administration
+	    default_category:             info
+	    default_subcategory:          false
+	
+	    master_section:
+	      administration:
+	        label: Administracja
+	        url:   @homepage
+	        credentials: [superadmin]
+	
+	    menu:
+	      administration:
+	        categories:
+	          info:
+	            label: Informacje
+	            url:   @homepage
+	            credentials: [admin]
+	          users:
+	            label: Users
+	            url:   @sf_guard_user
+	            credentials: [admin]
+	          permissions:
+	            label: Permissions
+	            url:   @sf_guard_permission
+	            credentials: [superadmin]
+	          groups:
+	            label: Groups
+	            url:   @sf_guard_group
+	            credentials: [superadmin]
 
-* web_dir - Where the plugin's default css/javascript/images are kept.
-* image_dir - Where your images for Thunderwolf Admin are kept - 
-images should be 48x48.
-* default_image - The default item image if none is specified - this 
-must be in the *image_dir* folder.
-* resize_mode - How the image will be resized for the menu items.
-    * thumbnail - Looks for a directory inside *image_dir* called *small* 
-for an image with the same - it should be 16x16.
-    * html - Resizes the image with the html *img* tag width/height attributes.
-* site - What you would like the site name to be (shows up in the *path bar* as a link).
-* site_start_year - Year when site was started (for copyright in the *path bar*
-* include_path - Whether to generate path "breadcrumbs". Those are meant mainly for the admin generator.
-* include_jquery_no_conflict - In case you are using another JS framework in you website, you should set this to true. It will prevent jQuery from interfering.
-* logout -  Whether a logout link will be shown.
-* login_route - The route to the login action, defaults to the sfGuardPlugin's.
-* logout_route - The route to the logout action, defaults to the sfGuardPlugin's.
 
-You can override these settings as you see fit.
 
-###Step 6 - configure the Thunderwolf Menu items
+TODO
+----
 
-[TODO]...Works different from oryginal plugin...[TODO]
+*   Theme for Propel1.5 admin generator
+*   CSS and design for __sfAssetsLibraryPlugin__
+
+
+----
+
+This plugin graphics and HTML design is sponsored by [ARUKOMP](http://www.arukomp.pl) company. 
+
+All graphics are licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0)
+
+![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
 

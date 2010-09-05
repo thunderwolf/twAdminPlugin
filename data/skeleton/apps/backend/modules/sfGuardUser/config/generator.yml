@@ -2,7 +2,7 @@ generator:
   class: sfPropelGenerator
   param:
     model_class:           sfGuardUser
-    theme:                 thunderwolf
+    theme:                 twadmin
     non_verbose_templates: true
     with_show:             false
     singular:              ~
@@ -12,7 +12,8 @@ generator:
 
     config:
       fields:
-        password_again: { label: "Password (again)" }
+        password: { help: "I drugi help" }
+        password_again: { label: "Password (again)", help: "To Ja help" }
 
       list:
         title:   User list
