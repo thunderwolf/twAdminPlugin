@@ -6,7 +6,7 @@
  * @package     twAdminPlugin
  * @subpackage  twDefault
  * @author      Arkadiusz Tułodziecki
- * @version     SVN: $Id: BasetwAdminComponents.class.php 3221 2010-07-31 16:30:14Z ldath $
+ * @version     SVN: $Id: BasetwAdminComponents.class.php 3350 2010-09-25 18:28:36Z ldath $
  */
 abstract class BasetwAdminComponents extends sfComponents {
 
@@ -37,6 +37,7 @@ abstract class BasetwAdminComponents extends sfComponents {
 		$this->ms = $ms;
 
 		if (!empty($ts)) {
+			ksort($ts);
 			foreach ($ts as $k => $v) {
 				if (!twAdmin::routeExists($v['url'], $this->getContext())) {
 					$ts[$k]['url'] = '@homepage';

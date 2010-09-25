@@ -3,18 +3,14 @@ all:
     login_route:                  @sf_guard_signin
     logout_route:                 @sf_guard_signout
     
-    default_module:               administration
-    default_category:             info
-    default_subcategory:          false
-
     master_section:
-      administration:
-        label: Administracja
-        url:   @homepage
+      usersadmin:
+        label: Users
+        url:   @sf_guard_user
         credentials: [superadmin]
 
     menu:
-      administration:
+      usersadmin:
         categories:
           info:
             label: Informacje

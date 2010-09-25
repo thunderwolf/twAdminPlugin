@@ -8,12 +8,12 @@ require_once dirname(__FILE__).'/../lib/BasesfGuardUserActions.class.php';
  * @package    sfGuardPlugin
  * @subpackage sfGuardUser
  * @author     Fabien Potencier
- * @version    SVN: $Id: actions.class.php 3205 2010-06-04 00:02:35Z ldath $
+ * @version    SVN: $Id: actions.class.php 3345 2010-09-25 16:52:43Z ldath $
  */
 class sfGuardUserActions extends basesfGuardUserActions
 {
 	public function preExecute() {
-		sfConfig::set('tw_admin:default:module', 'administration');
+		sfConfig::set('tw_admin:default:module', 'usersadmin');
 		sfConfig::set('tw_admin:default:category', 'users');
 		return parent::preExecute();
 	}

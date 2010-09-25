@@ -14,8 +14,8 @@ all:
     login_route:                  @homepage
     logout_route:                 @homepage
     
-    default_module:               false
-    default_category:             false
+    default_module:               homepage
+    default_category:             index
     default_subcategory:          false
     
     not_logged_top_active:        false
@@ -23,5 +23,13 @@ all:
     
     master_section:
       homepage: 
-        label: Strona Główna
+        label: Main Page
         url:   @homepage
+
+    menu:
+      homepage:
+        categories: 
+          index:
+            label: Informations
+            url:   @homepage
+        

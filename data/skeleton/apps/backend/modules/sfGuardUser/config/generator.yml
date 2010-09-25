@@ -24,7 +24,7 @@ generator:
         display:
           "NONE":                   [username, password, password_again]
           "Permissions and groups": [is_active, is_super_admin, sf_guard_user_group_list, sf_guard_user_permission_list]
-          "Profile":                [email, first_name, last_name, birthday, alias, culture]
+          #"Profile":                [email, first_name, last_name, birthday, alias, culture]
 
       edit:
         title: Editing User "%%username%%"
