@@ -8,7 +8,6 @@ require_once dirname(__FILE__).'/../lib/BasesfGuardUserActions.class.php';
  * @package    sfGuardPlugin
  * @subpackage sfGuardUser
  * @author     Fabien Potencier
- * @version    SVN: $Id: actions.class.php 3345 2010-09-25 16:52:43Z ldath $
  */
 class sfGuardUserActions extends basesfGuardUserActions
 {

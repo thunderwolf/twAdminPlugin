@@ -6,7 +6,6 @@
  * @package     twAdminPlugin
  * @subpackage  config
  * @author      Arkadiusz Tułodziecki
- * @version     SVN: $Id: twAdminPluginConfiguration.class.php 3216 2010-07-31 14:49:35Z ldath $
  */
 class twAdminPluginConfiguration extends sfPluginConfiguration {
 	const VERSION = '1.0.0-DEV';

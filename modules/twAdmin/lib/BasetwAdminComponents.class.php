@@ -6,7 +6,6 @@
  * @package     twAdminPlugin
  * @subpackage  twDefault
  * @author      Arkadiusz Tułodziecki
- * @version     SVN: $Id: BasetwAdminComponents.class.php 3350 2010-09-25 18:28:36Z ldath $
  */
 abstract class BasetwAdminComponents extends sfComponents {
 

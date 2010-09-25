@@ -6,7 +6,6 @@
  * @package    ##PROJECT_NAME##
  * @subpackage filter
  * @author     ##AUTHOR_NAME##
- * @version    SVN: $Id: sfGuardUserFormFilter.class.php 3222 2010-07-31 16:32:39Z patryk $
  */
 class sfGuardUserFormFilter extends BasesfGuardUserFormFilter {
 	public function configure() {

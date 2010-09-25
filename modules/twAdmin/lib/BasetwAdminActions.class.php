@@ -6,7 +6,6 @@
  * @package     twAdminPlugin
  * @subpackage  twAdmin
  * @author      Arkadiusz Tułodziecki
- * @version     SVN: $Id: BasetwAdminActions.class.php 3345 2010-09-25 16:52:43Z ldath $
  */
 abstract class BasetwAdminActions extends sfActions
 {

@@ -6,7 +6,6 @@
  * @package     twAdminPlugin
  * @subpackage  config
  * @author      Arkadiusz Tułodziecki
- * @version     SVN: $Id: twAdmin.class.php 3221 2010-07-31 16:30:14Z ldath $
  */
 class twAdmin {
 	/**

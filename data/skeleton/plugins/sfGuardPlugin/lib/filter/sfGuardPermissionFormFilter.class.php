@@ -6,7 +6,6 @@
  * @package    ##PROJECT_NAME##
  * @subpackage filter
  * @author     ##AUTHOR_NAME##
- * @version    SVN: $Id: sfGuardPermissionFormFilter.class.php 3210 2010-07-31 14:02:29Z ldath $
  */
 class sfGuardPermissionFormFilter extends BasesfGuardPermissionFormFilter {
 	public function configure() {
