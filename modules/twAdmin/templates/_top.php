@@ -26,6 +26,7 @@ $ts = $sf_data->getRaw('ts');
 		<?php if ($items > 0): ?> | <?php endif; ?>
 		<?php if ($items > 3): ?>
 		<select name="path" onchange="location=this.value;">
+			<option><?php echo __('Select module') ?></option>
 			<?php foreach ($ts as $titem): ?>
 			<option value="<?php echo url_for($titem['url']) ?>"><?php echo __($titem['label'], array(), 'messages')?></option>
 			<?php endforeach; ?>
