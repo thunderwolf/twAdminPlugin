@@ -21,6 +21,9 @@ abstract class BasetwAdminComponents extends sfComponents {
 			$ms = twAdmin::getProperty('master_section');
 			$ts = twAdmin::getProperty('top_section');
 		}
+		
+		$section = sfConfig::get('tw_admin:default:module', twAdmin::getProperty('default_module'));
+		
 		if (!empty($ms)) {
 			foreach ($ms as $k => $v) {
 				if (!twAdmin::routeExists($v['url'], $this->getContext())) {
@@ -34,7 +37,7 @@ abstract class BasetwAdminComponents extends sfComponents {
 			}
 		}
 		$this->ms = $ms;
-
+		
 		if (!empty($ts)) {
 			ksort($ts);
 			foreach ($ts as $k => $v) {
@@ -45,6 +48,10 @@ abstract class BasetwAdminComponents extends sfComponents {
 					if (!$this->getUser()->hasCredential($v['credentials'])) {
 						unset($ts[$k]);
 					}
+				}
+				$ts[$k]['select'] = false;
+				if ($k == $section) {
+					$ts[$k]['select'] = true;
 				}
 			}
 		}
