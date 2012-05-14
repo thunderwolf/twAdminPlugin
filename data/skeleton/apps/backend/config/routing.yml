@@ -1,3 +1,0 @@
-homepage:
-  url:   /
-  param: { module: twAdmin, action: index }
