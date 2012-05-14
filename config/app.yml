@@ -1,35 +1,39 @@
 all:
+  ckeditor:
+    basePath:         '/twAdminPlugin/ckeditor/'
+
   tw_admin:
     web_dir:                      /twAdminPlugin
     image_dir:                    /twAdminPlugin/images/
     
     site:                         My Site
-    site_start_year:              2009
+    site_start_year:              2012
     
     include_path:                 true
     include_jquery_no_conflict:   false
-    
-    login:                        false
-    logout:                       true
-    login_route:                  @homepage
-    logout_route:                 @homepage
     
     default_module:               homepage
     default_category:             index
     default_subcategory:          false
     
-    not_logged_top_active:        false
-    not_logged_menu_active:       false
+    #login:                        false
+    #logout:                       true
+    
+    #not_logged_top_active:        false
+    #not_logged_menu_active:       false
+    
+    #login_route:                  '@homepage'
+    #logout_route:                 '@homepage'
     
     master_section:
       homepage: 
         label: Main Page
-        url:   @homepage
+        url:   '@homepage'
 
     menu:
       homepage:
         categories: 
           index:
             label: Informations
-            url:   @homepage
+            url:   '@homepage'
         

@@ -3,42 +3,73 @@ use_helper('I18N');
 $ms = $sf_data->getRaw('ms');
 $ts = $sf_data->getRaw('ts');
 ?>
-<div id="layout-top" class="layout-row"><div class="layout-box">
-	<h1><a href="/" title="Powrót do strony głównej">Strona główna</a></h1>
-<?php if ($sf_user->isAuthenticated() || !empty($ms) || !empty($ts)): ?>
-	<div class="text-line">
-		<?php if ($sf_user->isAuthenticated()): ?>Jesteś zalogowany jako <strong><?php echo $sf_user->getUsername() ?></strong><?php endif; ?>
-		<?php if ($sf_user->isAuthenticated() && twAdmin::getProperty('logout', false)): ?>
-		 | <a href="<?php echo url_for(twAdmin::getProperty('logout_route')) ?>" class="link-color-1">Wyloguj</a>
-		<?php endif; ?>
-		<?php if (!$sf_user->isAuthenticated() && twAdmin::getProperty('login', false)): ?>
-		<a href="<?php echo url_for(twAdmin::getProperty('login_route')) ?>" class="link-color-2">Zaloguj</a>
-		<?php endif; ?>
-		<br/>
-
-		<?php $i = 0; ?>
-		<?php foreach ($ms as $mitem): ?>
-		<?php if ($i > 0): ?> | <?php endif; ?>
-		<a href="<?php echo url_for($mitem['url']) ?>" class="link-color-2"><?php echo __($mitem['label'], array(), 'messages')?></a>
-		<?php $i++; ?>
-		<?php endforeach; ?>
-		<?php $items = count($ts); ?>
-		<?php if ($items > 0): ?> | <?php endif; ?>
-		<?php if ($items > 3): ?>
-		<select name="path" onchange="location=this.value;">
-			<option value="<?php echo url_for('@homepage') ?>"><?php echo __('Select module') ?></option>
-			<?php foreach ($ts as $titem): ?>
-			<option value="<?php echo url_for($titem['url']) ?>"<?php if ($titem['select'] === true): ?> selected="selected"<?php endif; ?>><?php echo __($titem['label'], array(), 'messages')?></option>
-			<?php endforeach; ?>
-		</select>
-		<?php elseif ($items > 0 && $items <= 3): ?>
-		<?php $i = 0; ?>
-		<?php foreach ($ts as $titem): ?>
-		<?php if ($i > 0): ?> | <?php endif; ?>
-		<a href="<?php echo url_for($titem['url']) ?>" class="link-color-3"><?php echo __($titem['label'], array(), 'messages')?></a>
-		<?php $i++; ?>
-		<?php endforeach; ?>
-		<?php endif; ?>
+<?php if($sf_user->isAuthenticated()): ?>
+	<style>
+		body {
+			padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+		}
+	</style>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="<?php echo url_for('@homepage') ?>"><?php echo twAdmin::getProperty('site'); ?></a>
+				<?php if ($sf_user->isAuthenticated() || !empty($ms) || !empty($ts)): ?>
+				<ul class="nav pull-right">
+					<?php foreach ($ms as $mitem): ?>
+					<li<?php if ($mitem['select'] === true):?> class="active"<?php endif;?>><a href="<?php echo url_for($mitem['url']) ?>"><?php echo __($mitem['label'], array(), 'messages')?></a></li>
+					<?php endforeach; ?>
+					<li class="divider-vertical"></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Select module') ?> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<?php foreach ($ts as $titem): ?>
+							<li><a href="<?php echo url_for($titem['url']) ?>"><?php echo __($titem['label'], array(), 'messages')?></a></li>
+							<?php endforeach; ?>
+						</ul>
+					</li>
+					<li class="divider-vertical"></li>
+					<?php if ($sf_user->isAuthenticated() && twAdmin::getProperty('logout', false)): ?>
+					<li>
+						<div class="btn-group pull-right">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="icon-user"></i> <?php echo $sf_user->getUsername() ?>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Profile</a></li>
+								<li class="divider"></li>
+								<li><a href="<?php echo url_for(twAdmin::getProperty('logout_route')) ?>">Sign Out</a></li>
+							</ul>
+						</div>
+					</li>
+					<?php else: ?>
+					<li><a href="#">You are logged as <strong><?php echo $sf_user->getUsername() ?></strong></a></li>
+					<?php endif; ?>
+					<?php if (!$sf_user->isAuthenticated() && twAdmin::getProperty('login', false)): ?>
+					<li><a href="<?php echo url_for(twAdmin::getProperty('login_route')) ?>"">Sign In</a></li>
+					<?php endif; ?>
+				</ul>
+				
+				<div class="nav-collapse">
+					<ul class="nav">
+						<?php foreach ($ms as $mitem): ?>
+						<li<?php if ($mitem['select'] === true):?> class="active"<?php endif;?>><a href="<?php echo url_for($mitem['url']) ?>"><?php echo __($mitem['label'], array(), 'messages')?></a></li>
+						<?php endforeach; ?>
+					</ul>
+				</div><!--/.nav-collapse -->
+				<?php endif; ?>
+			</div>
+		</div>
 	</div>
+<?php else: ?>
+<div id="twadmin-top">
+	<div class="<?php echo $container_type ?>">
+		<img alt="Thunderwolf Logo" src="<?php echo twAdmin::getProperty('web_dir') . '/img/logo.png' ?>">
+	</div>
+</div>
 <?php endif; ?>
-</div></div> <!-- #layout-top -->

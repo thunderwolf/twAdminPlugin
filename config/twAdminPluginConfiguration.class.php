@@ -8,7 +8,7 @@
  * @author      Arkadiusz Tułodziecki
  */
 class twAdminPluginConfiguration extends sfPluginConfiguration {
-	const VERSION = '1.0.0-DEV';
+	const VERSION = '1.1.0-DEV';
 
 	/**
 	 * @see sfPluginConfiguration
@@ -17,7 +17,7 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 		if (in_array('twAdmin', sfConfig::get('sf_enabled_modules', array()))) {
 			// the plugin module is in the enabled modules, add assets:
 			$this->dispatcher->connect('context.load_factories', array('twAdminPluginConfiguration', 'listenToContextLoadFactoriesEvent'));
-
+			
 			if (true == twAdmin::getProperty('include_jquery_no_conflict')) {
 				// if include_jquery_no_conflict is set to true, we need to modify the response content
 				$this->dispatcher->connect('response.filter_content', array('twAdminPluginConfiguration', 'listenToResponseFilterContentEvent'));
@@ -31,14 +31,33 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 	 * @param sfEvent $event
 	 */
 	public static function listenToContextLoadFactoriesEvent(sfEvent $event) {
-		/** @var sfContext */
+		/** @param sfContext $context */
 		$context = $event->getSubject();
-
-		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/cupertino/jquery-ui-1.8.2.custom.css', 'first');
-		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/main.css', 'first');
-		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-1.4.2.min.js', 'first');
-		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.8.2.custom.min.js', 'first');
-		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/main.js', 'last');
+		
+		if (sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev') {
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap.css', 'first');
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive.css');
+		} else {
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap.min.css', 'first');
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive.min.css');
+		}
+		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/smoothness/jquery-ui-1.8.20.custom.css');
+		$context->getResponse()->addStylesheet('/sfJQueryDateTimeFormWidgetPlugin/css/timePicker.css');
+		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/twadmin.css', 'last');
+		
+		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-1.7.2.min.js', 'first');
+		if (sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev') {
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap.js');
+		} else {
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap.min.js');
+		}
+		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.8.20.custom.min.js');
+		if (in_array(sfConfig::get('sf_default_culture', 'en'), array('pl', 'pl_PL'))) {
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date-pl-PL.js');
+		} else {
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date.js');
+		}
+		$context->getResponse()->addJavascript('/sfJQueryDateTimeFormWidgetPlugin/js/jquery.timePicker.js', 'last');
 	}
 
 	/**

@@ -9,7 +9,7 @@
 
   [?php foreach ($pager->getLinks() as $page): ?]
     [?php if ($page == $pager->getPage()): ?]
-      <span class="current">[?php echo $page ?]</span>
+      [?php echo $page ?]
     [?php else: ?]
       <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $page ?]">[?php echo $page ?]</a>
     [?php endif; ?]
