@@ -1,36 +1,27 @@
 <?php
 use_helper('I18N');
-$ms = $sf_data->getRaw('ms');
-$ts = $sf_data->getRaw('ts');
+$module = $sf_data->getRaw('module');
 $menu = $sf_data->getRaw('menu');
 $submenu = $sf_data->getRaw('submenu');
 ?>
 <?php if($sf_user->isAuthenticated()): ?>
 <style>
 	body {
-		padding-top: <?php if (empty($submenu)): ?>60<?php else: ?>90<?php endif; ?>px; /* 60px to make the container go all the way to the bottom of the topbar */
+		padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 		padding-bottom: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 	}
 </style>
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
 			<a class="brand" href="<?php echo url_for('@homepage') ?>"><?php echo twAdmin::getProperty('site'); ?></a>
 			<?php if ($sf_user->isAuthenticated() || !empty($ms) || !empty($ts)): ?>
 			<ul class="nav pull-right">
-				<?php foreach ($ms as $mitem): ?>
-				<li<?php if ($mitem['select'] === true):?> class="active"<?php endif;?>><a href="<?php echo url_for($mitem['url']) ?>"><?php echo __($mitem['label'], array(), 'messages')?></a></li>
-				<?php endforeach; ?>
 				<li class="divider-vertical"></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Select module') ?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<?php foreach ($ts as $titem): ?>
+						<?php foreach ($module as $titem): ?>
 						<li><a href="<?php echo url_for($titem['url']) ?>"><?php echo __($titem['label'], array(), 'messages')?></a></li>
 						<?php endforeach; ?>
 					</ul>
@@ -62,7 +53,7 @@ $submenu = $sf_data->getRaw('submenu');
 			<div class="nav-collapse">
 				<ul class="nav">
 					<?php foreach($menu as $item): ?>
-					<li<?php if (isset($item['selected']) && $item['select'] === true):?> class="active"<?php endif;?>><a href="<?php echo url_for($item['url']) ?>"><?php echo __($item['label'], array(), 'messages')?></a></li>
+					<li<?php if ($item['select'] === true):?> class="active"<?php endif;?>><a href="<?php echo url_for($item['url']) ?>"><?php echo __($item['label'], array(), 'messages')?></a></li>
 					<?php endforeach; ?>
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -72,10 +63,12 @@ $submenu = $sf_data->getRaw('submenu');
 	</div>
 </div>
 <?php if (!empty($submenu)): ?>
-<div class="subnav subnav-fixed">
+<div class="<?php echo $container_type ?>">
 	<ul class="nav nav-pills">
 		<?php foreach($submenu as $item): ?>
-		<li<?php if (isset($item['selected']) && $item['select'] === true):?> class="active"<?php endif;?>><a href="<?php echo url_for($item['url']) ?>"><?php echo __($item['label'], array(), 'messages')?></a></li>
+		<li<?php if ($item['select'] === true):?> class="active"<?php endif;?>>
+			<a href="<?php echo url_for($item['url']) ?>"><?php echo __($item['label'], array(), 'messages')?></a>
+		</li>
 		<?php endforeach; ?>
 	</ul>
 </div>

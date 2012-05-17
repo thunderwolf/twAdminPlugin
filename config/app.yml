@@ -19,17 +19,9 @@ all:
     #login:                        false
     #logout:                       true
     
-    #not_logged_top_active:        false
-    #not_logged_menu_active:       false
-    
     #login_route:                  '@homepage'
     #logout_route:                 '@homepage'
     
-    master_section:
-      homepage: 
-        label: Main Page
-        url:   '@homepage'
-
     menu:
       homepage:
         categories: 
