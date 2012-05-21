@@ -24,7 +24,7 @@ abstract class BasetwAdminComponents extends sfComponents {
 		
 		$menus = twAdmin::getProperty('menu');
 		$menu = array();
-		if (array_key_exists($section, $menu)) {
+		if (array_key_exists($section, $menus)) {
 			$menu = $menus[$section]['categories'];
 		}
 		$this->menu = $this->formatList($menu, $category);
