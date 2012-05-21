@@ -23,11 +23,14 @@ abstract class BasetwAdminComponents extends sfComponents {
 		$this->module = $this->formatList($module);
 		
 		$menus = twAdmin::getProperty('menu');
-		$menu = $menus[$section]['categories'];
+		$menu = array();
+		if (array_key_exists($section, $menu)) {
+			$menu = $menus[$section]['categories'];
+		}
 		$this->menu = $this->formatList($menu, $category);
 		
 		$submenu = array();
-		if (array_key_exists('items', $menu[$category])) {
+		if (array_key_exists($category, $menu) && array_key_exists('items', $menu[$category])) {
 			$submenu = $this->formatList($menu[$category]['items'], $subcategory);
 		}
 		$this->submenu = $submenu;
