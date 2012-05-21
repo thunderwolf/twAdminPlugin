@@ -18,10 +18,6 @@
 	<form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'batch')) ?]" method="post" class="form-inline">
 <?php endif; ?>
 	[?php include_partial('<?php echo $this->getModuleName() ?>/list', array('pager' => $pager, 'sort' => $sort, 'helper' => $helper)) ?]
-		<ul class="tw_admin_actions">
-			[?php include_partial('<?php echo $this->getModuleName() ?>/list_batch_actions', array('helper' => $helper)) ?]
-			[?php include_partial('<?php echo $this->getModuleName() ?>/list_actions', array('helper' => $helper)) ?]
-		</ul>
 <?php if ($this->configuration->getValue('list.batch_actions')): ?>
 	</form>
 <?php endif; ?>
