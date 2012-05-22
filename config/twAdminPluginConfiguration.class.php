@@ -36,10 +36,8 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 		
 		if (sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev') {
 			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap.css', 'first');
-			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive.css');
 		} else {
 			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap.min.css', 'first');
-			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive.min.css');
 		}
 		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/smoothness/jquery-ui-1.8.20.custom.css');
 		$context->getResponse()->addStylesheet('/sfJQueryDateTimeFormWidgetPlugin/css/timePicker.css');

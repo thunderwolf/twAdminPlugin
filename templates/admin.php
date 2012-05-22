@@ -7,6 +7,16 @@
 		<?php include_title() ?>
 		<link rel="shortcut icon" href="<?php echo twAdmin::getProperty('web_dir') . '/favicon.ico' ?>" />
 		<?php include_stylesheets() ?>
+		<?php if ($sf_user->isAuthenticated()): ?>
+		<style>
+			body {
+				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+				padding-bottom: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+			}
+		</style>
+		<link href="<?php echo twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive'.((sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev')?'':'.min').'.css'; ?>" rel="stylesheet">
+		
+		<?php endif; ?>
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

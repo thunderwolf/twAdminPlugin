@@ -5,15 +5,14 @@ $menu = $sf_data->getRaw('menu');
 $submenu = $sf_data->getRaw('submenu');
 ?>
 <?php if($sf_user->isAuthenticated()): ?>
-<style>
-	body {
-		padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-		padding-bottom: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-	}
-</style>
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
 			<a class="brand" href="<?php echo url_for('@homepage') ?>"><?php echo twAdmin::getProperty('site'); ?></a>
 			<?php if ($sf_user->isAuthenticated() || !empty($ms) || !empty($ts)): ?>
 			<ul class="nav pull-right">
