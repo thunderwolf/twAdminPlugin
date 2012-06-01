@@ -19,6 +19,8 @@
 			'class'      => 'tw_admin_'.strtolower($field->getType()).' tw_admin_filter_field_'.$name,
 		)) ?]
 [?php endforeach; ?]
-	[?php echo link_to(__('Reset', array(), 'sf_admin'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post', 'class' => 'btn btn-inverse')) ?]
-	<input type="submit" value="[?php echo __('Filter', array(), 'sf_admin') ?]" class="btn btn-primary" />
+	<div class="pull-right">
+		[?php echo link_to(__('Reset', array(), 'sf_admin'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post', 'class' => 'btn btn-inverse')) ?]
+		<input type="submit" value="[?php echo __('Filter', array(), 'sf_admin') ?]" class="btn btn-primary" />
+	</div>
 </form>

@@ -36,5 +36,8 @@ if (!$sf_user->isAuthenticated()) {
 			<?php echo $sf_content ?>
 		</div> <!-- /container -->
 		<?php include_component('twAdmin', 'footer', array('container_type' => $container_type)) ?>
+		<script type="text/javascript">
+			$('[rel="tooltip"]').tooltip();
+		</script>
 	</body>
 </html>
