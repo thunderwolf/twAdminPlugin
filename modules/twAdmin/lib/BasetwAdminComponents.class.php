@@ -18,8 +18,16 @@ abstract class BasetwAdminComponents extends sfComponents {
 		$category = sfConfig::get('tw_admin:default:category', twAdmin::getProperty('default_category'));
 		$subcategory = sfConfig::get('tw_admin:default:subcategory', twAdmin::getProperty('default_subcategory'));
 		
-		$module = twAdmin::getProperty('module');
-		ksort($module);
+		$module = array();
+		$pre_module = twAdmin::getProperty('module');
+		foreach ($pre_module as $k => $value) {
+			$to_sort[$value['label']] = $k;
+		}
+		ksort($to_sort);
+		foreach ($to_sort as $k) {
+			$module[$k] = $pre_module[$k];
+		}
+		
 		$this->module = $this->formatList($module);
 		
 		$menus = twAdmin::getProperty('menu');
