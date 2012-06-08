@@ -15,13 +15,12 @@
 			}
 		</style>
 		<link href="<?php echo twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive'.((sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev')?'':'.min').'.css'; ?>" rel="stylesheet">
-		
 		<?php endif; ?>
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<?php include_javascripts() ?>
+		
 	</head>
 	<body>
 <?php
@@ -36,6 +35,11 @@ if (!$sf_user->isAuthenticated()) {
 			<?php echo $sf_content ?>
 		</div> <!-- /container -->
 		<?php include_component('twAdmin', 'footer', array('container_type' => $container_type)) ?>
+		<?php include_javascripts() ?>
+		<?php if (in_array('twMediaUploader', sfConfig::get('sf_enabled_modules', array()))): ?>
+		<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
+		<!--[if gte IE 8]><script src="/twMediaPlugin/jqfu/js/cors/jquery.xdr-transport.js"></script><![endif]-->
+		<?php endif; ?>
 		<script type="text/javascript">
 			$('[rel="tooltip"]').tooltip();
 		</script>
