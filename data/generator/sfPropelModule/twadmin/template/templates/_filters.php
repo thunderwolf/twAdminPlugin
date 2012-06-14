@@ -2,7 +2,7 @@
 [?php use_javascripts_for_form($form) ?]
 
 [?php if ($form->hasGlobalErrors()): ?]
-  [?php echo $form->renderGlobalErrors() ?]
+	[?php echo $form->renderGlobalErrors() ?]
 [?php endif; ?]
 
 <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post" class="well form-inline">
