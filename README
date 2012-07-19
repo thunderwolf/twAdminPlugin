@@ -13,123 +13,103 @@ This plugin automates the process by using a configuration files.
 [twCorePlugin](http://www.symfony-project.org/plugins/twCorePlugin)
 Base plugin for all Thunderwolf Plugins
 
-[sfGuardPlugin](http://www.symfony-project.org/plugins/sfGuardPlugin)
+[twAdminGuardPlugin](http://www.symfony-project.org/plugins/twAdminGuardPlugin)
 The Best plugin for authentication
 
 ##Installation
 
 Install plugin:
 
-	symfony plugin:install twAdminPlugin -s alpha
+	symfony plugin:install twAdminPlugin
 	symfony cache:clear
 
 Create backend or admin app if not exists:
 
 	symfony generate:app backend
 
-Next use prepared skeleton:
-
-*   replace or merge __/apps/backend/config/app.yml__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/config/app.yml__ 
->**Note**
-> Remember to change fragments connecting this app.yml with sfGuardPlugin if you don't use it
-
-*   replace or merge __/apps/backend/config/routing.yml__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/config/routing.yml__
-
-*   merge __/apps/backend/config/settings.yml__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/config/settings.yml__
-
-*   replace __/apps/backend/templates/layout.php__ with __/plugins/twAdminPlugin/data/skeleton/apps/backend/templates/layout.php__
-
-If you use __sfGuardPlugin__:
-
-*   Be shure that you made all installations for __sfGuardPlugin__
-
-*   copy folders from __/plugins/twAdminPlugin/data/skeleton/apps/backend/modules/__ to __/apps/backend/modules/__
-
-*   replace or merge files in __/plugins/sfGuardPlugin__ with files in __/plugins/twAdminPlugin/data/skeleton/plugins/sfGuardPlugin__ (better look in admin section)
-
-If you don't have own favicon.ico you can use this preoared for Thunderwolf:
-
-*   Just copy __/plugins/twAdminPlugin/data/skeleton/web/favicon.ico__ to your __/web__ folder
-
 Publish the plugin's assets:
 
 	plugin:publish-assets
 
-If the modules are admin generator modules, deactivate the default admin generator theme in each module's *generator.yml* by creating a css property.  You can either point the css property to a real stylesheet or just use a placeholder.
+If the modules are admin generator modules, change the default admin generator theme in each module's *generator.yml* to the **twadmin** Theme
 
-	generator:
-	  class: sfPropelGenerator
-	  param:
-	    model_class:           Article
 	    theme:                 twadmin
-	    non_verbose_templates: true
-	    with_show:             false
-	    singular:              ~
-	    plural:                ~
-	    route_prefix:          article
-	    with_propel_route:     1
-	    css:                   nothing   #setting the css to a placeholder 
-	
-	    config:
-	      actions: ~
-	      fields:  ~
-	      list:    ~
-	      filter:  ~
-	      form:    ~
-	      edit:    ~
-	      new:     ~
 
-The plugin's *app.yml* file looks like the following:
+This plugin default *app.yml* file looks like the following:
+
+	all:
+	  ckeditor:
+	    basePath:         '/twAdminPlugin/ckeditor/'
+
+	  tw_admin:
+	    web_dir:                      /twAdminPlugin
+	    image_dir:                    /twAdminPlugin/images/
+	    
+	    site:                         My Site
+	    site_start_year:              2012
+	    
+	    include_path:                 true
+	    include_jquery_no_conflict:   false
+	    
+	    default_module:               homepage
+	    default_category:             index
+	    default_subcategory:          false
+	    
+	    #login:                        false
+	    #logout:                       true
+	    
+	    #login_route:                  '@homepage'
+	    #logout_route:                 '@homepage'
+	    
+	    menu:
+	      homepage:
+	        categories: 
+	          index:
+	            label: Informations
+	            url:   '@homepage'
+
+For example **twAdminGuardPlugin** default *app.yml* file looks like the following:
+
 
 	all:
 	  tw_admin:
-	    login_route:                  @sf_guard_signin
-	    logout_route:                 @sf_guard_signout
+	    login:                        false
+	    logout:                       true
 	    
-	    default_module:               administration
-	    default_category:             info
-	    default_subcategory:          false
-	
-	    master_section:
-	      administration:
-	        label: Administracja
-	        url:   @homepage
+	    login_route:                  '@tw_guard_signin'
+	    logout_route:                 '@tw_guard_signout'
+	    
+	    module:
+	      usersadmin:
+	        label: Użytkownicy
+	        url:   '@tw_guard_user'
 	        credentials: [superadmin]
-	
+
 	    menu:
-	      administration:
+	      usersadmin:
 	        categories:
-	          info:
-	            label: Informacje
-	            url:   @homepage
-	            credentials: [admin]
 	          users:
-	            label: Users
-	            url:   @sf_guard_user
+	            label: Użytkownicy
+	            url:   '@tw_guard_user'
 	            credentials: [admin]
 	          permissions:
-	            label: Permissions
-	            url:   @sf_guard_permission
+	            label: Uprawnienia
+	            url:   '@tw_guard_permission'
 	            credentials: [superadmin]
 	          groups:
-	            label: Groups
-	            url:   @sf_guard_group
+	            label: Grupy Uprawnień
+	            url:   '@tw_guard_group'
 	            credentials: [superadmin]
-
-
-
-TODO
-----
-
-*   Theme for Propel1.5 admin generator
-*   CSS and design for __sfAssetsLibraryPlugin__
+	    
 
 
 ----
 
-This plugin graphics and HTML design is sponsored by [ARUKOMP](http://www.arukomp.pl) company. 
+This plugin is based on [Bootstrap, from Twitter](http://twitter.github.com/bootstrap/) 
 
-All graphics are licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0)
+This plugin have some additional graphics and HTML design is sponsored by [ARUKOMP](http://www.arukomp.pl) company. 
+
+All this additional graphics are licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0)
 
 ![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
 
