@@ -5,7 +5,7 @@
       return;
     }
 
-    $column = <?php echo constant($this->getModelClass().'::PEER') ?>::translateFieldName($sort[0], BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_COLNAME);
+    $column = <?php echo constant($this->getModelClass() . '::PEER') ?>::translateFieldName($sort[0], BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_COLNAME);
     if ('asc' == $sort[1])
     {
       $criteria->addAscendingOrderByColumn($column);

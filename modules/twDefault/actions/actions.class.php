@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).'/../lib/BasetwDefaultActions.class.php';
+require_once dirname(__FILE__) . '/../lib/BasetwDefaultActions.class.php';
 
 /**
  * twDefault actions.
@@ -9,6 +9,5 @@ require_once dirname(__FILE__).'/../lib/BasetwDefaultActions.class.php';
  * @subpackage twDefault
  * @author     Arkadiusz Tułodziecki
  */
-class twDefaultActions extends BasetwDefaultActions
-{
+class twDefaultActions extends BasetwDefaultActions {
 }

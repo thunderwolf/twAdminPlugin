@@ -7,6 +7,5 @@
  * @subpackage generator
  * @author      Arkadiusz Tułodziecki
  */
-abstract class twAdminGeneratorHelper extends sfModelGeneratorHelper
-{
+abstract class twAdminGeneratorHelper extends sfModelGeneratorHelper {
 }

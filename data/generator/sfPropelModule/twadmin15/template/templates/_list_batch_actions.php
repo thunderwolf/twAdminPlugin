@@ -1,8 +1,8 @@
-<?php if ($listActions = $this->configuration->getValue('list.batch_actions')): ?>
+<?php if ($listActions = $this->configuration->getValue('list.batch_actions')) : ?>
 <select name="batch_action">
 	<option value="">[?php echo __('Choose an action', array(), 'sf_admin') ?]</option>
-<?php foreach ((array) $listActions as $action => $params): ?>
-	<?php echo $this->addCredentialCondition('<option value="'.$action.'">[?php echo __(\''.$params['label'].'\', array(), \'sf_admin\') ?]</option>', $params) ?>
+<?php foreach ((array) $listActions as $action => $params) : ?>
+	<?php echo $this->addCredentialCondition('<option value="' . $action . '">[?php echo __(\'' . $params['label'] . '\', array(), \'sf_admin\') ?]</option>', $params) ?>
 <?php endforeach; ?>
 </select>
 [?php $form = new BaseForm(); if ($form->isCSRFProtected()): ?]

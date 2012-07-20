@@ -14,7 +14,7 @@ abstract class BasetwDefaultActions extends sfActions {
 	 */
 	public function executeError404() {
 	}
-
+	
 	/**
 	 * Module disabled in settings.yml
 	 *

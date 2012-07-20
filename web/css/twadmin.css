@@ -5,7 +5,7 @@
 	color: #b2c3d4;
 }
 
-#twadmin-top > div {
+#twadmin-top>div {
 	background: url('../img/top-cien.png') right no-repeat;
 	position: relative;
 }

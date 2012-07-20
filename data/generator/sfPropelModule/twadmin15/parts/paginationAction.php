@@ -19,15 +19,15 @@
 
   protected function buildQuery()
   {
-<?php if ($this->configuration->hasFilterForm()): ?>
+<?php if ($this->configuration->hasFilterForm()) : ?>
     if (null === $this->filters)
     {
       $this->filters = $this->configuration->getFilterForm($this->getFilters());
 <?php echo $this->getFormCustomization('filter', 'filters') ?>
     }
-
+	
     $query = $this->filters->buildCriteria($this->getFilters());
-<?php else: ?>
+<?php else : ?>
     $query = PropelQuery::from('<?php echo $this->getModelClass() ?>');
 <?php endif; ?>
 

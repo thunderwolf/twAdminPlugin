@@ -9,22 +9,26 @@
  */
 class twAdminPluginConfiguration extends sfPluginConfiguration {
 	const VERSION = '1.1.0-DEV';
-
+	
 	/**
 	 * @see sfPluginConfiguration
 	 */
 	public function initialize() {
 		if (in_array('twAdmin', sfConfig::get('sf_enabled_modules', array()))) {
 			// the plugin module is in the enabled modules, add assets:
-			$this->dispatcher->connect('context.load_factories', array('twAdminPluginConfiguration', 'listenToContextLoadFactoriesEvent'));
+			$this->dispatcher->connect('context.load_factories', array(
+					'twAdminPluginConfiguration', 'listenToContextLoadFactoriesEvent'
+				));
 			
 			if (true == twAdmin::getProperty('include_jquery_no_conflict')) {
 				// if include_jquery_no_conflict is set to true, we need to modify the response content
-				$this->dispatcher->connect('response.filter_content', array('twAdminPluginConfiguration', 'listenToResponseFilterContentEvent'));
+				$this->dispatcher->connect('response.filter_content', array(
+						'twAdminPluginConfiguration', 'listenToResponseFilterContentEvent'
+					));
 			}
 		}
 	}
-
+	
 	/**
 	 * After the context has been initiated, we can add the required assets
 	 *
@@ -50,14 +54,16 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap.min.js');
 		}
 		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.8.20.custom.min.js');
-		if (in_array(sfConfig::get('sf_default_culture', 'en'), array('pl', 'pl_PL'))) {
+		if (in_array(sfConfig::get('sf_default_culture', 'en'), array(
+			'pl', 'pl_PL'
+		))) {
 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date-pl-PL.js');
 		} else {
 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date.js');
 		}
 		$context->getResponse()->addJavascript('/sfJQueryDateTimeFormWidgetPlugin/js/jquery.timePicker.js', 'last');
 	}
-
+	
 	/**
 	 * This is the right way to add stuff to the <head> tag after the page has been generated :)
 	 * The principle is the same as with the old sfCommonFilter and asset insertion in sf 1.0-1.2
@@ -68,13 +74,14 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 	 * @return string
 	 */
 	public static function listenToResponseFilterContentEvent(sfEvent $event, $content = null) {
-		$jquery_include_tag = '<script type="text/javascript" src="' . twAdmin::getProperty('web_dir') . '/js/' . twAdmin::getProperty('jquery_filename') . '"></script>';
+		$jquery_include_tag = '<script type="text/javascript" src="' . twAdmin::getProperty('web_dir') . '/js/' . twAdmin::getProperty('jquery_filename')
+			. '"></script>';
 		$jquery_no_conflict_tag = '<script type="text/javascript">jQuery.noConflict();</script>';
-
+		
 		if (false !== ($pos = strpos($content, $jquery_include_tag))) {
 			$content = substr($content, 0, $pos + strlen($jquery_include_tag)) . $jquery_no_conflict_tag . substr($content, $pos + strlen($jquery_include_tag));
 		}
-
+		
 		return $content;
 	}
 }

@@ -17,9 +17,9 @@ class twAdmin {
 	 * @return mixed
 	 */
 	public static function getProperty($name, $default = null) {
-		return sfConfig::get( 'app_tw_admin_' . $name, $default );
+		return sfConfig::get('app_tw_admin_' . $name, $default);
 	}
-
+	
 	/**
 	 * A proxy method for sfConfig::set(), userd because it's more convenient
 	 *
@@ -27,9 +27,9 @@ class twAdmin {
 	 * @param mixed  $value
 	 */
 	public static function setProperty($name, $value) {
-		sfConfig::set( 'app_tw_admin_' . $name, $value );
+		sfConfig::set('app_tw_admin_' . $name, $value);
 	}
-
+	
 	/**
 	 * Check if the supplied route exists
 	 *

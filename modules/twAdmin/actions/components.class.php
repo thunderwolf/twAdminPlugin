@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).'/../lib/BasetwAdminComponents.class.php';
+require_once dirname(__FILE__) . '/../lib/BasetwAdminComponents.class.php';
 
 /**
  * twAdmin components.
@@ -9,6 +9,5 @@ require_once dirname(__FILE__).'/../lib/BasetwAdminComponents.class.php';
  * @subpackage twDefault
  * @author     Arkadiusz Tułodziecki
  */
-class twAdminComponents extends BasetwAdminComponents
-{
+class twAdminComponents extends BasetwAdminComponents {
 }

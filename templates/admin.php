@@ -7,14 +7,15 @@
 		<?php include_title() ?>
 		<link rel="shortcut icon" href="<?php echo twAdmin::getProperty('web_dir') . '/favicon.ico' ?>" />
 		<?php include_stylesheets() ?>
-		<?php if ($sf_user->isAuthenticated()): ?>
+		<?php if ($sf_user->isAuthenticated()) : ?>
 		<style>
 			body {
 				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 				padding-bottom: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 			}
 		</style>
-		<link href="<?php echo twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive'.((sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev')?'':'.min').'.css'; ?>" rel="stylesheet">
+		<link href="<?php echo twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive'
+		. ((sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev') ? '' : '.min') . '.css'; ?>" rel="stylesheet">
 		<?php endif; ?>
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -30,13 +31,17 @@ if (!$sf_user->isAuthenticated()) {
 	$container_type = 'container-fluid';
 }
 ?>
-	<?php include_component('twAdmin', 'menu', array('container_type' => $container_type)) ?>
+	<?php include_component('twAdmin', 'menu', array(
+	'container_type' => $container_type
+)) ?>
 		<div class="<?php echo $container_type ?>">
 			<?php echo $sf_content ?>
 		</div> <!-- /container -->
-		<?php include_component('twAdmin', 'footer', array('container_type' => $container_type)) ?>
+		<?php include_component('twAdmin', 'footer', array(
+	'container_type' => $container_type
+)) ?>
 		<?php include_javascripts() ?>
-		<?php if (in_array('twMediaUploader', sfConfig::get('sf_enabled_modules', array()))): ?>
+		<?php if (in_array('twMediaUploader', sfConfig::get('sf_enabled_modules', array()))) : ?>
 		<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 		<!--[if gte IE 8]><script src="/twMediaPlugin/jqfu/js/cors/jquery.xdr-transport.js"></script><![endif]-->
 		<?php endif; ?>

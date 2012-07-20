@@ -12,7 +12,8 @@
 		<span class="[?php if ($is_textarea): ?]help-block[?php else: ?]help-inline[?php endif; ?]">[?php echo $form[$name]->renderError() ?]</span>
 		[?php else: ?]
 			[?php if ($help): ?]
-		<span class="[?php if ($is_textarea): ?]help-block[?php else: ?]help-inline[?php endif; ?]">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</span>
+		<span class="[?php if ($is_textarea): ?]help-block[?php else: ?]help-inline[?php endif; ?]">[?php echo __($help, array(), '<?php echo $this
+	->getI18nCatalogue() ?>') ?]</span>
 			[?php elseif ($help = $form[$name]->renderHelp()): ?]
 		<span class="[?php if ($is_textarea): ?]help-block[?php else: ?]help-inline[?php endif; ?]">[?php echo $help ?]</span>
 			[?php endif; ?]

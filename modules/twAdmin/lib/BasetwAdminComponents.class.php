@@ -51,12 +51,13 @@ abstract class BasetwAdminComponents extends sfComponents {
 		}
 		$this->version = $version;
 	}
-
+	
 	/**
 	 * Sidebar
 	 *
 	 */
-	public function executeSidebar() {}
+	public function executeSidebar() {
+	}
 	
 	protected function formatList(&$items, $active_key = null) {
 		foreach ($items as $k => $v) {

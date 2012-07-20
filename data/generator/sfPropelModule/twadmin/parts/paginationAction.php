@@ -22,14 +22,14 @@
 
   protected function buildCriteria()
   {
-<?php if ($this->configuration->hasFilterForm()): ?>
+<?php if ($this->configuration->hasFilterForm()) : ?>
     if (null === $this->filters)
     {
       $this->filters = $this->configuration->getFilterForm($this->getFilters());
     }
-
+	
     $criteria = $this->filters->buildCriteria($this->getFilters());
-<?php else: ?>
+<?php else : ?>
     $criteria = new Criteria();
 <?php endif; ?>
 

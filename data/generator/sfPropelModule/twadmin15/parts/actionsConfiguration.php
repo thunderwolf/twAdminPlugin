@@ -6,7 +6,12 @@
 
   public function getFormActions()
   {
-    return <?php echo $this->asPhp(isset($this->config['form']['actions']) ? $this->config['form']['actions'] : array('_delete' => null, '_list' => null, '_save' => null, '_save_and_add' => null)) ?>;
+    return <?php echo $this
+	->asPhp(
+		isset($this->config['form']['actions']) ? $this->config['form']['actions']
+			: array(
+				'_delete' => null, '_list' => null, '_save' => null, '_save_and_add' => null
+			)) ?>;
 <?php unset($this->config['form']['actions']) ?>
   }
 
@@ -24,22 +29,34 @@
 
   public function getListObjectActions()
   {
-    <?php if ($this->hasBehavior('sortable')): ?>
-    return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array('_edit' => null, '_move_up' => null, '_move_down' => null, '_delete' => null)) ?>;
-    <?php else: ?>
-    return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array('_edit' => null, '_delete' => null)) ?>;
+    <?php if ($this->hasBehavior('sortable')) : ?>
+    return <?php echo $this
+		->asPhp(
+			isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions']
+				: array(
+					'_edit' => null, '_move_up' => null, '_move_down' => null, '_delete' => null
+				)) ?>;
+    <?php else : ?>
+    return <?php echo $this
+		->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array(
+			'_edit' => null, '_delete' => null
+		)) ?>;
     <?php endif ?>
 <?php unset($this->config['list']['object_actions']) ?>
   }
 
   public function getListActions()
   {
-    return <?php echo $this->asPhp(isset($this->config['list']['actions']) ? $this->config['list']['actions'] : array('_new' => null)) ?>;
+    return <?php echo $this->asPhp(isset($this->config['list']['actions']) ? $this->config['list']['actions'] : array(
+		'_new' => null
+	)) ?>;
 <?php unset($this->config['list']['actions']) ?>
   }
 
   public function getListBatchActions()
   {
-    return <?php echo $this->asPhp(isset($this->config['list']['batch_actions']) ? $this->config['list']['batch_actions'] : array('_delete' => null)) ?>;
+    return <?php echo $this->asPhp(isset($this->config['list']['batch_actions']) ? $this->config['list']['batch_actions'] : array(
+		'_delete' => null
+	)) ?>;
 <?php unset($this->config['list']['batch_actions']) ?>
   }
