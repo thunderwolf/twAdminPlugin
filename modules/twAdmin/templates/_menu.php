@@ -48,7 +48,7 @@ $submenu = $sf_data->getRaw('submenu');
 					<li><a href="<?php echo url_for(twAdmin::getProperty('login_route')) ?>"">Sign In</a></li>
 					<?php endif; ?>
 				</ul>
-				<?php if ($sf_user->isAuthenticated() || !empty($menu)) : ?>
+				<?php if (($sf_user->isAuthenticated() || !empty($menu)) && $nav_type == 'navbar') : ?>
 				<ul class="nav">
 					<?php foreach ($menu as $item) : ?>
 					<li<?php if ($item['select'] === true) : ?> class="active"<?php endif; ?>>
@@ -64,6 +64,21 @@ $submenu = $sf_data->getRaw('submenu');
 		</div>
 	</div>
 </div>
+
+<?php if (($sf_user->isAuthenticated() || !empty($menu)) && $nav_type == 'tabs'): ?>
+<div class="container-fluid">
+	<ul class="nav nav-tabs">
+		<?php foreach ($menu as $item) : ?>
+		<li<?php if ($item['select'] === true) : ?> class="active"<?php endif; ?>>
+			<a href="<?php echo url_for($item['url']) ?>">
+				<?php echo __($item['label'], array(), 'messages') ?>
+			</a>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
+
 <?php if (!empty($submenu)) : ?>
 <div class="<?php echo $container_type ?>">
 	<ul class="nav nav-pills">

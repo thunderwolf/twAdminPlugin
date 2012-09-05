@@ -15,6 +15,7 @@ all:
     default_module:               homepage
     default_category:             index
     default_subcategory:          false
+    default_nav:                  navbar
     
     #login:                        false
     #logout:                       true
