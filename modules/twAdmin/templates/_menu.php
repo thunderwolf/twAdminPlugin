@@ -19,10 +19,10 @@ $submenu = $sf_data->getRaw('submenu');
 				<ul class="nav pull-right">
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Select module') ?> <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Select module', array(), 'tw_admin') ?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<?php foreach ($module as $titem) : ?>
-						<li><a href="<?php echo url_for($titem['url']) ?>"><?php echo __($titem['label'], array(), 'messages') ?></a></li>
+						<li><a href="<?php echo url_for($titem['url']) ?>"><?php echo __($titem['label'], array(), 'tw_admin') ?></a></li>
 							<?php endforeach; ?>
 						</ul>
 					</li>
@@ -35,17 +35,17 @@ $submenu = $sf_data->getRaw('submenu');
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Profile</a></li>
+								<li><a href="#"><?php echo __('Profile', null, 'tw_admin') ?></a></li>
 								<li class="divider"></li>
-								<li><a href="<?php echo url_for(twAdmin::getProperty('logout_route')) ?>">Sign Out</a></li>
+								<li><a href="<?php echo url_for(twAdmin::getProperty('logout_route')) ?>"><?php echo __('Sign Out', null, 'tw_admin') ?></a></li>
 							</ul>
 						</div>
 					</li>
 					<?php else : ?>
-					<li><a href="#">You are logged as <strong><?php echo $sf_user->getUsername() ?></strong></a></li>
+					<li><a href="#"><?php echo __('You are logged as', null, 'tw_admin') ?> <strong><?php echo $sf_user->getUsername() ?></strong></a></li>
 					<?php endif; ?>
 					<?php if (!$sf_user->isAuthenticated() && twAdmin::getProperty('login', false)) : ?>
-					<li><a href="<?php echo url_for(twAdmin::getProperty('login_route')) ?>"">Sign In</a></li>
+					<li><a href="<?php echo url_for(twAdmin::getProperty('login_route')) ?>""><?php echo __('Sign In', null, 'tw_admin') ?></a></li>
 					<?php endif; ?>
 				</ul>
 				<?php if (($sf_user->isAuthenticated() || !empty($menu)) && $nav_type == 'navbar') : ?>
@@ -53,7 +53,7 @@ $submenu = $sf_data->getRaw('submenu');
 					<?php foreach ($menu as $item) : ?>
 					<li<?php if ($item['select'] === true) : ?> class="active"<?php endif; ?>>
 						<a href="<?php echo url_for($item['url']) ?>">
-							<?php echo __($item['label'], array(), 'messages') ?>
+							<?php echo __($item['label'], array(), $section) ?>
 						</a>
 					</li>
 					<?php endforeach; ?>
@@ -71,7 +71,7 @@ $submenu = $sf_data->getRaw('submenu');
 		<?php foreach ($menu as $item) : ?>
 		<li<?php if ($item['select'] === true) : ?> class="active"<?php endif; ?>>
 			<a href="<?php echo url_for($item['url']) ?>">
-				<?php echo __($item['label'], array(), 'messages') ?>
+				<?php echo __($item['label'], array(), $section) ?>
 			</a>
 		</li>
 		<?php endforeach; ?>
@@ -84,7 +84,7 @@ $submenu = $sf_data->getRaw('submenu');
 	<ul class="nav nav-pills">
 		<?php foreach ($submenu as $item) : ?>
 		<li<?php if ($item['select'] === true) : ?> class="active"<?php endif; ?>>
-			<a href="<?php echo url_for($item['url']) ?>"><?php echo __($item['label'], array(), 'messages') ?></a>
+			<a href="<?php echo url_for($item['url']) ?>"><?php echo __($item['label'], array(), $category) ?></a>
 		</li>
 		<?php endforeach; ?>
 	</ul>

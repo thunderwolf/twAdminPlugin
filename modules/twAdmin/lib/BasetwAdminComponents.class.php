@@ -19,6 +19,9 @@ abstract class BasetwAdminComponents extends sfComponents {
 		$subcategory = sfConfig::get('tw_admin:default:subcategory', twAdmin::getProperty('default_subcategory'));
 		$nav_type = sfConfig::get('tw_admin:default:nav', twAdmin::getProperty('default_nav'));
 		
+		$this->section = $section;
+		$this->category = $category;
+		
 		$nav_types = array('navbar', 'tabs');
 		if (!in_array($nav_type, $nav_types)) {
 			$nav_type = 'navbar';

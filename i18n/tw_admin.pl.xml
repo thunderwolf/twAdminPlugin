@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Select module</source>
+        <target>Wybierz moduł</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Profile</source>
+        <target>Profil</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Sign Out</source>
+        <target>Wyloguj się</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>You are logged as</source>
+        <target>Jesteś zalogowany jako</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Sign In</source>
+        <target>Zaloguj się</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
