@@ -43,8 +43,9 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 		} else {
 			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap.min.css', 'first');
 		}
-		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/smoothness/jquery-ui-1.8.20.custom.css');
-		$context->getResponse()->addStylesheet('/sfJQueryDateTimeFormWidgetPlugin/css/timePicker.css');
+		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/datepicker.css');
+// 		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/smoothness/jquery-ui-1.8.20.custom.css');
+// 		$context->getResponse()->addStylesheet('/sfJQueryDateTimeFormWidgetPlugin/css/timePicker.css');
 		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/twadmin.css', 'last');
 		
 		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-1.7.2.min.js', 'first');
@@ -53,15 +54,16 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 		} else {
 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap.min.js');
 		}
-		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.8.20.custom.min.js');
-		if (in_array(sfConfig::get('sf_default_culture', 'en'), array(
-			'pl', 'pl_PL'
-		))) {
-			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date-pl-PL.js');
-		} else {
-			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date.js');
-		}
-		$context->getResponse()->addJavascript('/sfJQueryDateTimeFormWidgetPlugin/js/jquery.timePicker.js', 'last');
+		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap-datepicker.js');
+// 		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.8.20.custom.min.js');
+// 		if (in_array(sfConfig::get('sf_default_culture', 'en'), array(
+// 			'pl', 'pl_PL'
+// 		))) {
+// 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date-pl-PL.js');
+// 		} else {
+// 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/date.js');
+// 		}
+// 		$context->getResponse()->addJavascript('/sfJQueryDateTimeFormWidgetPlugin/js/jquery.timePicker.js', 'last');
 	}
 	
 	/**

@@ -47,6 +47,7 @@ if (!$sf_user->isAuthenticated()) {
 		<?php endif; ?>
 		<script type="text/javascript">
 			$('[rel="tooltip"]').tooltip();
+			$('[rel="datepicker"]').datepicker();
 		</script>
 	</body>
 </html>
