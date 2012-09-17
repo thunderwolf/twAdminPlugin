@@ -13,7 +13,7 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper 
 	}
 
 	public function linkToNew($params) {
-		return link_to(__($params['label'], array(), 'sf_admin'), '@'.$this->getUrlForAction('new'), array('class' => 'btn btn-primary'));
+		return link_to('<i class="icon-plus"></i> '.__($params['label'], array(), 'sf_admin'), '@'.$this->getUrlForAction('new'), array('class' => 'btn btn-primary'));
 	}
 
 	public function linkToEdit($object, $params, $size = 'btn') {
@@ -25,7 +25,7 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper 
 			return '';
 		}
 		
-		return link_to(__($params['label'], array(), 'sf_admin'), $this->getUrlForAction('delete'), $object, array('method' => 'delete', 'confirm' => !empty($params['confirm']) ? __($params['confirm'], array(), 'sf_admin') : $params['confirm'], 'class' => $size.' btn-danger'));
+		return link_to('<i class="icon-trash"></i> '.__($params['label'], array(), 'sf_admin'), $this->getUrlForAction('delete'), $object, array('method' => 'delete', 'confirm' => !empty($params['confirm']) ? __($params['confirm'], array(), 'sf_admin') : $params['confirm'], 'class' => $size.' btn-danger'));
 	}
 
 	public function linkToList($params) {
