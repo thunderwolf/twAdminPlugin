@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+form.form-inline br {
+	display:none
+}
+
+
 #twadmin-top {
 	background: url('../img/top-gradient.png');
 	color: #b2c3d4;
