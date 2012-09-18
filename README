@@ -107,6 +107,10 @@ For example **twAdminGuardPlugin** default *app.yml* file looks like the followi
 
 This plugin is based on [Bootstrap, from Twitter](http://twitter.github.com/bootstrap/) 
 
+Custom navbar collors:
+Darker: #dceaf8
+Dark: #f5f9fd
+
 This plugin have some additional graphics and HTML design is sponsored by [ARUKOMP](http://www.arukomp.pl) company. 
 
 All this additional graphics are licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0)
