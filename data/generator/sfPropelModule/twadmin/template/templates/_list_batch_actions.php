@@ -8,5 +8,5 @@
 [?php $form = new BaseForm(); if ($form->isCSRFProtected()): ?]
 <input type="hidden" name="[?php echo $form->getCSRFFieldName() ?]" value="[?php echo $form->getCSRFToken() ?]" />
 [?php endif; ?]
-<input type="submit" value="[?php echo __('go', array(), 'sf_admin') ?]" class="btn" />
+<input type="submit" value="[?php echo __('go', array(), 'sf_admin') ?]" class="btn btn-warning" />
 <?php endif; ?>
