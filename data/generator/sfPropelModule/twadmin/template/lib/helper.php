@@ -17,7 +17,7 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper 
 	}
 
 	public function linkToEdit($object, $params, $size = 'btn') {
-		return link_to(__($params['label'], array(), 'sf_admin'), $this->getUrlForAction('edit'), $object, array('class' => $size.' btn-primary'));
+		return link_to('<i class="icon-edit"></i> '.__($params['label'], array(), 'sf_admin'), $this->getUrlForAction('edit'), $object, array('class' => $size.' btn-primary'));
 	}
 
 	public function linkToDelete($object, $params, $size = 'btn') {
