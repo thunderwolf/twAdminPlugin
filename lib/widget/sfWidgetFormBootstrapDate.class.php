@@ -39,6 +39,6 @@ class sfWidgetFormBootstrapDate extends sfWidgetFormInput {
 		return '<div class="input-append date" data-date-format="' . $this->getOption('format') . '" data-date="' . (!empty($value)?$value:date($date_format, time())) . '" rel="datepicker">'
 			. $this->renderTag('input', array_merge(array(
 					'type' => $this->getOption('type'), 'name' => $name, 'value' => $value
-				), $attributes)) . '<span class="add-on"><i class="icon-th"></i></span></div>';
+				), $attributes)) . '<span class="add-on"><i class="icon-calendar"></i></span></div>';
 	}
 }
