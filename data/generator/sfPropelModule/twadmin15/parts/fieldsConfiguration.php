@@ -1,9 +1,6 @@
   public function getListParams()
   {
-    return <?php echo $this
-	->asPhp(
-		isset($this->config['list']['params']) ? $this->config['list']['params']
-			: '%%' . implode('%% - %%', isset($this->config['list']['display']) ? $this->config['list']['display'] : $this->getAllFieldNames(false)) . '%%') ?>;
+    return <?php echo $this->asPhp(isset($this->config['list']['params']) ? $this->config['list']['params'] : '%%' . implode('%% - %%', isset($this->config['list']['display']) ? $this->config['list']['display'] : $this->getAllFieldNames(false)) . '%%') ?>;
 <?php unset($this->config['list']['params']) ?>
   }
 
@@ -22,15 +19,13 @@
 
   public function getEditTitle()
   {
-    return '<?php echo $this
-	->escapeString(isset($this->config['edit']['title']) ? $this->config['edit']['title'] : 'Edit ' . sfInflector::humanize($this->getModuleName())) ?>';
+    return '<?php echo $this->escapeString(isset($this->config['edit']['title']) ? $this->config['edit']['title'] : 'Edit ' . sfInflector::humanize($this->getModuleName())) ?>';
 <?php unset($this->config['edit']['title']) ?>
   }
 
   public function getNewTitle()
   {
-    return '<?php echo $this
-	->escapeString(isset($this->config['new']['title']) ? $this->config['new']['title'] : 'New ' . sfInflector::humanize($this->getModuleName())) ?>';
+    return '<?php echo $this->escapeString(isset($this->config['new']['title']) ? $this->config['new']['title'] : 'New ' . sfInflector::humanize($this->getModuleName())) ?>';
 <?php unset($this->config['new']['title']) ?>
   }
 
@@ -78,9 +73,7 @@
 <?php endforeach; ?>
     );
   }
-<?php foreach (array(
-	'list', 'filter', 'form', 'edit', 'new'
-) as $context) : ?>
+<?php foreach (array('list', 'filter', 'form', 'edit', 'new') as $context) : ?>
   public function getFields<?php echo ucfirst($context) ?>()
   {
     return array(
@@ -90,3 +83,15 @@
     );
   }
 <?php endforeach; ?>
+
+  public function getNewReturnTo()
+  {
+    return '<?php echo $this->escapeString(isset($this->config['new']['return_to']) ? $this->config['new']['return_to'] : 'edit') ?>';
+<?php unset($this->config['new']['return_to']) ?>
+  }
+
+  public function getEditReturnTo()
+  {
+    return '<?php echo $this->escapeString(isset($this->config['edit']['return_to']) ? $this->config['edit']['return_to'] : 'edit') ?>';
+<?php unset($this->config['edit']['return_to']) ?>
+  }

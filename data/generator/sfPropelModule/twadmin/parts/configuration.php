@@ -7,7 +7,7 @@
  * @subpackage <?php echo $this->getModuleName() . "\n" ?>
  * @author     ##AUTHOR_NAME##
  */
-abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfiguration extends sfModelGeneratorConfiguration
+abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfiguration extends twModelAdminGeneratorConfiguration
 {
 <?php include dirname(__FILE__) . '/actionsConfiguration.php' ?>
 
@@ -36,9 +36,7 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfigu
    */
   public function getFilterFormClass()
   {
-    return '<?php echo isset($this->config['filter']['class']) && !in_array($this->config['filter']['class'], array(
-		null, true, false
-	), true) ? $this->config['filter']['class'] : $this->getModelClass() . 'FormFilter' ?>';
+    return '<?php echo isset($this->config['filter']['class']) && !in_array($this->config['filter']['class'], array(null, true, false), true) ? $this->config['filter']['class'] : $this->getModelClass() . 'FormFilter' ?>';
 <?php unset($this->config['filter']['class']) ?>
   }
 <?php include dirname(__FILE__) . '/paginationConfiguration.php' ?>

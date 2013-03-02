@@ -1,9 +1,11 @@
 generator:
-  class: sfPropelGenerator
+  class: twPropelAdminGenerator
   param:
 ##CONFIG##
 
     config:
+      template:
+        span: 12
       actions: ~
       fields:  ~
       list:    ~
