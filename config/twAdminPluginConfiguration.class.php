@@ -8,7 +8,7 @@
  * @author      Arkadiusz Tułodziecki
  */
 class twAdminPluginConfiguration extends sfPluginConfiguration {
-	const VERSION = '1.1.0-DEV';
+	const VERSION = '1.2.0-DEV';
 	
 	/**
 	 * @see sfPluginConfiguration
@@ -40,34 +40,30 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 		
 		if (sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev') {
 			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap.css', 'first');
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive.css');
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/smoothness/jquery-ui-1.10.1.custom.css');
 		} else {
 			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap.min.css', 'first');
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/bootstrap-responsive.min.css');
+			$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/smoothness/jquery-ui-1.10.1.custom.min.css');
 		}
-		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/datepicker.css'); // conflict with jquery-ui
-// 		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/smoothness/jquery-ui-1.8.20.custom.css');
-// 		if (in_array('twJQueryDateTimeFormWidgetPlugin', sfConfig::get('sf_enabled_modules', array()))) {
-// 			$context->getResponse()->addStylesheet('/twJQueryDateTimeFormWidgetPlugin/css/timePicker.css');
-// 		}
+		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/jquery-ui-timepicker-addon.css');
+		
 		$context->getResponse()->addStylesheet(twAdmin::getProperty('web_dir') . '/css/twadmin.css', 'last');
 		
-		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-1.7.2.min.js', 'first');
 		if (sfContext::getInstance()->getConfiguration()->getEnvironment() == 'dev') {
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-1.9.1.js');
 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap.js');
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.10.1.custom.js');
 		} else {
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-1.9.1.min.js');
 			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap.min.js');
+			$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.10.1.custom.min.js');
 		}
-		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/bootstrap-datepicker.js'); // conflict with jquery-ui
-// 		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-1.8.20.custom.min.js');
-// 		if (in_array('twJQueryDateTimeFormWidgetPlugin', sfConfig::get('sf_enabled_modules', array()))) {
-// 			if (in_array(sfConfig::get('sf_default_culture', 'en'), array(
-// 				'pl', 'pl_PL'
-// 			))) {
-// 				$context->getResponse()->addJavascript('/twJQueryDateTimeFormWidgetPlugin/js/date-pl-PL.js');
-// 			} else {
-// 				$context->getResponse()->addJavascript('/twJQueryDateTimeFormWidgetPlugin/js/date.js');
-// 			}
-// 			$context->getResponse()->addJavascript('/twJQueryDateTimeFormWidgetPlugin/js/jquery.timePicker.js', 'last');
-// 		}
+		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-timepicker-addon.js');
+		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/jquery-ui-datepicker-pl.js');
+		
+		$context->getResponse()->addJavascript(twAdmin::getProperty('web_dir') . '/js/twadmin.js', 'last');
 	}
 	
 	/**
@@ -80,8 +76,7 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 	 * @return string
 	 */
 	public static function listenToResponseFilterContentEvent(sfEvent $event, $content = null) {
-		$jquery_include_tag = '<script type="text/javascript" src="' . twAdmin::getProperty('web_dir') . '/js/' . twAdmin::getProperty('jquery_filename')
-			. '"></script>';
+		$jquery_include_tag = '<script type="text/javascript" src="' . twAdmin::getProperty('web_dir') . '/js/' . twAdmin::getProperty('jquery_filename') . '"></script>';
 		$jquery_no_conflict_tag = '<script type="text/javascript">jQuery.noConflict();</script>';
 		
 		if (false !== ($pos = strpos($content, $jquery_include_tag))) {
