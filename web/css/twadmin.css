@@ -1,7 +1,32 @@
 @CHARSET "UTF-8";
 
+/*
 form.form-inline br {
 	display:none
+}
+*/
+
+.navbar .navbar-inner {
+	background-color: #f5f9fd;
+	background-image: linear-gradient(to bottom, #dceaf8, #f5f9fd);
+	background-repeat: repeat-x;
+	border-color: #dceaf8;
+}
+
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover, .navbar .nav .active > a:focus {
+	background-color: #f5f9fd;
+	color: #000000;
+}
+
+.navbar .divider-vertical {
+	border-left-color: #f5f9fd;
+	border-right-color: #dceaf8;
+}
+
+
+.table-auto {
+	width: auto;
 }
 
 

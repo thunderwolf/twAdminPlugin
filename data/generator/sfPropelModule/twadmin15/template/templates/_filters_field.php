@@ -14,7 +14,7 @@
 		</span>
 
 		[?php if ($help || $help = $form[$name]->renderHelp()): ?]
-		<a rel="tooltip" href="#" data-original-title="[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]"><i class="icon-info-sign"></i></a>&nbsp;
+		<span class="help-block">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</span>
 		[?php endif; ?]
 	</div>
 </div>
