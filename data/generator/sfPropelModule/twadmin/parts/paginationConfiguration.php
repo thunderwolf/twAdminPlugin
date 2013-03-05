@@ -12,6 +12,6 @@
 
   public function getTemplatesSpan()
   {
-    return <?php echo isset($this->config['template']['span']) ? (integer) $this->config['template']['span'] : 12 ?>;
+    return <?php echo isset($this->config['template']['span']) ? (integer) $this->config['template']['span'] : false ?>;
 <?php unset($this->config['template']['span']) ?>
   }
