@@ -70,6 +70,9 @@ abstract class BasetwAdminComponents extends sfComponents {
 	public function executeSidebar() {
 	}
 	
+	public function executeScripts() {
+	}
+	
 	protected function formatList(&$items, $active_key = null) {
 		foreach ($items as $k => $v) {
 			if (!twAdmin::routeExists($v['url'], $this->getContext())) {

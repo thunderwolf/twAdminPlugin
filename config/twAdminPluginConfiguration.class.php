@@ -14,6 +14,7 @@ class twAdminPluginConfiguration extends sfPluginConfiguration {
 	 * @see sfPluginConfiguration
 	 */
 	public function initialize() {
+		twAdminJavaScriptHolder::initialize();
 		if (in_array('twAdmin', sfConfig::get('sf_enabled_modules', array()))) {
 			// the plugin module is in the enabled modules, add assets:
 			$this->dispatcher->connect('context.load_factories', array(

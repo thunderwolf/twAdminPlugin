@@ -48,6 +48,7 @@ if (!$sf_user->isAuthenticated()) {
 		<script type="text/javascript">
 			$('[rel="tooltip"]').tooltip();
 			$('[rel="datepicker"]').datepicker();
+			<?php include_component('twAdmin', 'scripts') ?>
 		</script>
 	</body>
 </html>
