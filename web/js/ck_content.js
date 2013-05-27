@@ -18,4 +18,5 @@ CKEDITOR.editorConfig = function( config )
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
         ['Styles','Format','Font','FontSize','-','SpellChecker', 'Scayt']
     ];
+    config.allowedContent = true;
 };
