@@ -35,8 +35,8 @@ $submenu = $sf_data->getRaw('submenu');
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><?php echo __('Profile', null, 'tw_admin') ?></a></li>
-								<li class="divider"></li>
+<!--								<li><a href="#">--><?php //echo __('Profile', null, 'tw_admin') ?><!--</a></li>-->
+<!--								<li class="divider"></li>-->
 								<li><a href="<?php echo url_for(twAdmin::getProperty('logout_route')) ?>"><?php echo __('Sign Out', null, 'tw_admin') ?></a></li>
 							</ul>
 						</div>
