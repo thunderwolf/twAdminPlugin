@@ -4,6 +4,14 @@
     "description": "symfony 1.x Admin Template plugin",
     "keywords": ["symfony", "admin", "bootstrap"],
     "homepage": "http://thunderwolf.net/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arkadiusz Tułodziecki",
+            "email": "atulodzi@gmail.com",
+            "homepage": "http://thunderwolf.net/"
+        }
+    ],
     "require": {
         "composer/installers": "*"
     }
