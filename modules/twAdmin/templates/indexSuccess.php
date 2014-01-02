@@ -1,2 +1,3 @@
 <h1>Welcome in (Bootstraped) Thunderwolf Admin</h1>
-<p>Please use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+<p>Please use this document as a way to quick start any new project.<br> All you get is this message and a barebones
+    HTML document.</p>

@@ -9,5 +9,6 @@ require_once dirname(__FILE__) . '/../lib/BasetwAdminActions.class.php';
  * @subpackage twAdmin
  * @author     Arkadiusz Tułodziecki
  */
-class twAdminActions extends BasetwAdminActions {
+class twAdminActions extends BasetwAdminActions
+{
 }

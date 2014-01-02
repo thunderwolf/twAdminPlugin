@@ -7,14 +7,16 @@
  * @subpackage generator
  * @author     Luciano Coggiola <tanoinc@gmail.com>
  */
-abstract class twModelAdminGeneratorConfiguration extends sfModelGeneratorConfiguration {
+abstract class twModelAdminGeneratorConfiguration extends sfModelGeneratorConfiguration
+{
 
-	protected function compile() {
-		parent::compile();
-		$this->configuration = array_merge($this->configuration,
-				array(
-						'template' => array('span' => $this->getTemplatesSpan(),)
-				));
-	}
+    protected function compile()
+    {
+        parent::compile();
+        $this->configuration = array_merge($this->configuration,
+            array(
+                'template' => array('span' => $this->getTemplatesSpan(),)
+            ));
+    }
 
 }
