@@ -8,32 +8,32 @@
  * @author     ##AUTHOR_NAME##
  */
 abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends twModelAdminGeneratorHelper {
-	public function getUrlForAction($action) {
-		return 'list' == $action ? '<?php echo $this->params['route_prefix'] ?>' : '<?php echo $this->params['route_prefix'] ?>_'.$action;
-	}
+    public function getUrlForAction($action) {
+        return 'list' == $action ? '<?php echo $this->params['route_prefix'] ?>' : '<?php echo $this->params['route_prefix'] ?>_'.$action;
+    }
 
-	public function linkToMoveUp($object, $params) {
-		if ($object->isFirst()) {
-			return '<li class="sf_admin_action_moveup disabled"><span>'.__($params['label'], array(), 'sf_admin').'</span></li>';
-		}
+    public function linkToMoveUp($object, $params) {
+        if (empty($params['action'])) {
+            $params['action'] = 'moveUp';
+        }
 
-		if (empty($params['action'])) {
-			$params['action'] = 'moveUp';
-		}
+        if ($object->isFirst()) {
+            return '<a title="'.__($params['label'], array(), 'sf_admin').'" class="btn btn-small disabled" href="'.url_for('<?php echo $this->params['route_prefix'] ?>/'.$params['action'].'?<?php echo $this->getPrimaryKeyUrlParams('$object', true); ?>).'"><i class="icon-chevron-up"></i> '.__($params['label'], array(), 'sf_admin').'</a>';
+        }
 
-		return '<li class="sf_admin_action_moveup">'.link_to(__($params['label'], array(), 'sf_admin'), '<?php echo $this->params['route_prefix'] ?>/'.$params['action'].'?<?php echo $this->getPrimaryKeyUrlParams('$object', true); ?>).'</li>';
-	}
+        return '<a title="'.__($params['label'], array(), 'sf_admin').'" class="btn btn-small" href="'.url_for('<?php echo $this->params['route_prefix'] ?>/'.$params['action'].'?<?php echo $this->getPrimaryKeyUrlParams('$object', true); ?>).'"><i class="icon-chevron-up"></i> '.__($params['label'], array(), 'sf_admin').'</a>';
+    }
 
-	public function linkToMoveDown($object, $params) {
-		if ($object->isLast()) {
-			return '<li class="sf_admin_action_movedown disabled"><span>'.__($params['label'], array(), 'sf_admin').'</span></li>';
-		}
+    public function linkToMoveDown($object, $params) {
+        if (empty($params['action'])) {
+            $params['action'] = 'moveDown';
+        }
 
-		if (empty($params['action'])) {
-			$params['action'] = 'moveDown';
-		}
+        if ($object->isLast()) {
+            return '<a title="'.__($params['label'], array(), 'sf_admin').'" class="btn btn-small disabled" href="'.url_for('<?php echo $this->params['route_prefix'] ?>/'.$params['action'].'?<?php echo $this->getPrimaryKeyUrlParams('$object', true); ?>).'"><i class="icon-chevron-down"></i> '.__($params['label'], array(), 'sf_admin').'</a>';
+        }
 
-		return '<li class="sf_admin_action_movedown">'.link_to(__($params['label'], array(), 'sf_admin'), '<?php echo $this->params['route_prefix'] ?>/'.$params['action'].'?<?php echo $this->getPrimaryKeyUrlParams('$object', true); ?>).'</li>';
-	}
+        return '<a title="'.__($params['label'], array(), 'sf_admin').'" class="btn btn-small" href="'.url_for('<?php echo $this->params['route_prefix'] ?>/'.$params['action'].'?<?php echo $this->getPrimaryKeyUrlParams('$object', true); ?>).'"><i class="icon-chevron-down"></i> '.__($params['label'], array(), 'sf_admin').'</a>';
+    }
 
 }
