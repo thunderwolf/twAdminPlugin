@@ -10,12 +10,18 @@
     <?php elseif ('_move_down' == $name) : ?>
         <?php echo $this->addCredentialCondition('[?php echo $helper->linkToMoveDown($' . $this->getSingularName() . ', ' . $this->asPhp($params) . ', \'btn-small\') ?]', $params) ?>
     <?php else: ?>
-    <?php
-        $params['params']['class'] = 'btn';
-        if (!isset($params['params']['size'])) {
-            $params['params']['class'] .= ' btn-small';
+        <?php
+        if (!isset($params['params']['class'])) {
+            $params['params']['class'] = 'btn btn-small';
         }
-    ?>
+        if (isset($params['icon'])) {
+            $label = $params['label'];
+            $params['label'] = '<i class="'.$params['icon'].'"></i>';
+            if (empty($params['only-icon'])) {
+                $params['label'] .= ' '.$label;
+            }
+        }
+        ?>
         <?php echo $this->addCredentialCondition($this->getLinkToAction($name, $params, true), $params) ?>
     <?php endif; ?>
 <?php endforeach; ?>
